@@ -1,0 +1,119 @@
+body{
+	background-color: #060913;
+	margin: 0;
+	font-family: Verdana;	
+	color: #fff;
+}
+header{
+	width: 100%;
+}
+.question-title{
+	border-radius: 0 0 30px 30px;
+	border: 1px #70a9b2 solid;
+	background-color: #70a9b2;
+	width: 800px;
+	height: 80px;
+	display: inline-block;
+	padding-top: 25px;
+	margin-top: 2px;
+	font-size: 18px;
+	text-align: center;
+}
+#camera{
+	float: left;
+	display: inline-block;
+	width: 500px;
+}
+.number-list > li{
+	background: url('../images/movie_s.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	width: 120px;
+	height: 110px;
+	display: block;
+	margin-bottom: 10px;
+	vertical-align: middle;
+	line-height: 110px;
+	font-size: 24px;
+	font-weight: bold;
+}
+li.current-question-number{
+	background: url('../images/movie_s_current.png');
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.current-question-number{
+	background: url('images/movie_s_current.jpg');
+}
+.answer-item{
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	display: inline-block;
+	margin: auto 10px;
+	background-color: #b28299;
+	text-align: center;
+	line-height: 150px;
+	cursor: pointer;
+}
+.answer-selected{
+	background-color: #70a9b2;
+}
+.questions-container, .numbers-container{
+	display: inline-block;
+	width: auto;
+	margin-top: 20px;
+	vertical-align: top;
+	text-align: center;
+}
+.questions-container{
+	margin-top: 120px;
+	margin-right: 50px;
+}
+.number-list, .answer-list{
+	padding-left: 25px;
+}
+
+.submit{
+	background-color: #dec8b8; 
+	cursor: pointer;
+	width: 150px;
+	height: 50px;
+	border-radius: 10px;
+	border: 1px #dec8b8 solid;
+	box-shadow: none;
+	font-size: 20px;
+	font-weight: bold;
+	color: #3a3a3a;
+	margin: 50px auto;
+}
+.submit:hover{
+	background-color: #dec8b8;
+	border: 1px #dec8b8 solid;
+}
+.submit:focus{
+	outline: none;
+}
+.answer{
+	width: 700px;
+	height: 642px;
+	background: url('../images/movie_l.png');
+	background-position: center;
+	background-repeat: no-repeat;
+	position: absolute;
+	left: 400px;
+	top: 50px;
+}
+.info{
+	margin: 150px 30px;
+	margin-bottom: 0;
+
+}
+.nextQuestion, .playAgain{
+	color: #b28299;
+	font-size: 28px;
+	font-weight: bold;
+	text-align: center;
+	margin-top: 40px;
+	cursor: pointer;
+}
