@@ -1,6 +1,10 @@
 $(document).ready(function(){
 	
+	$('.question-title').hide();
+	$('#camera').hide();
+	$('section').hide();
 	$('.answer').hide();
+	$('.intro').show().fadeIn(2000);
 	var questions = [
 		{
 			question: "Which film set in Rick's Cafe starred Humphrey Bogart and Ingrid Bergman?",
@@ -34,11 +38,13 @@ $(document).ready(function(){
 		}
 	];
 
-	questionsNumber = questions.length;
-	questionsCounter = 0;
+	var questionsNumber = questions.length;
+	var questionsCounter = 0;
+	var correctAnswers = 0;
 
 	var numbers = [];
 
+	//Create vertical question number list
 	for(var k=1; k<=questionsNumber; k++){
 		numbers[k-1] = k;
 		$('.number-list').append('<li id=question-number'+k+'>'+k+'</li>');
@@ -46,6 +52,13 @@ $(document).ready(function(){
 
 	getQuestion(questionsCounter);
 
+	$(document).on('click','.start-quiz', function(){
+			$('.question-title').show();
+			$('#camera').show();
+			$('section').show();
+			$('.answer').hide();
+			$('.intro').hide();
+	});
 	$(document).on('click', '.answer-item', function(){
 		$(this).siblings("li").removeClass("answer-selected");		
 		if($(this).hasClass("answer-selected")){
@@ -58,9 +71,11 @@ $(document).ready(function(){
 
 	$(document).on('click', '.submit', function(){
 		var answer = $('.answer-selected').text();
-		var rightAnswer = questions[questionsCounter].correctAnswer;
-		showAnswer(answer, rightAnswer, questionsCounter);
-		questionsCounter++;
+		if(answer !== ""){
+				var rightAnswer = questions[questionsCounter].correctAnswer;
+				showAnswer(answer, rightAnswer, questionsCounter);
+				questionsCounter++;
+			}		
 	});
 
 	$(document).on('click','.nextQuestion', function(){
@@ -71,16 +86,18 @@ $(document).ready(function(){
 			getQuestion(questionsCounter);
 		}
 		else{
-			$('.answer').html('<div class="info"><h3>Conqratulations! You have successfully finished the Movie Quiz!</h3><p>You have answered correctly x out of y questions!</p><p class="playAgain">Play again the quiz!</p></div>');
+			$('.answer').html('<div class="info"><h3>Conqratulations! You have successfully finished the Movie Quiz!</h3><p>You have answered correctly '+ correctAnswers +' out of '+ questionsNumber +' questions!</p><p class="playAgain">Play again the quiz!</p></div>');
 		}
 	});
 
 	$(document).on('click','.playAgain', function(){
 		location.reload(true);
 	});
+	
 	function showAnswer(answer, rightAnswer, questionsNumber){
 		if( answer == rightAnswer ){
 			$('.answer').html("<div class='info'><h3>That's Right!</h3><p>"+ questions[questionsNumber].info + "</p><p class='nextQuestion'>Next Question</p></div>");
+			correctAnswers++;
 		}
 		else{ 
 			$('.answer').html("<div class='info'><h3>Sorry! The right answer is <span><font color='red'>'" + rightAnswer +"'</font></span>.</h3><p>"+ questions[questionsNumber].info + "</p><p class='nextQuestion'>Next Question</p></div>");
@@ -88,6 +105,7 @@ $(document).ready(function(){
 		$('.question-title').hide();
 			$('section').hide();
 			$('.answer').show();
+			// return correctAnswers;
 	}
 	function getQuestion(Num){
 		if(Num<questionsNumber){

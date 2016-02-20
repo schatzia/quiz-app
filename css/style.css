@@ -41,6 +41,8 @@ li.current-question-number{
 	background: url('../images/movie_s_current.png');
 	background-repeat: no-repeat;
 	background-position: center;
+	-webkit-transition: background 10s;
+	transition: background 10s;
 }
 .current-question-number{
 	background: url('images/movie_s_current.jpg');
@@ -94,7 +96,7 @@ li.current-question-number{
 .submit:focus{
 	outline: none;
 }
-.answer{
+.answer, .intro{
 	width: 700px;
 	height: 642px;
 	background: url('../images/movie_l.png');
@@ -109,7 +111,7 @@ li.current-question-number{
 	margin-bottom: 0;
 
 }
-.nextQuestion, .playAgain{
+.nextQuestion, .playAgain, .start-quiz{
 	color: #b28299;
 	font-size: 28px;
 	font-weight: bold;
